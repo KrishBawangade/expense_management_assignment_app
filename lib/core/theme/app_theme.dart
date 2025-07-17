@@ -10,9 +10,11 @@ class AppTheme {
       contrastLevel: 1,
       seedColor: Color(0xFFE6319C),
       primary: Color(0xFFE6319C),
+      secondary: Color(0xFF70C187),
       brightness: Brightness.light, // stick to one
     ),
-    scaffoldBackgroundColor: Colors.grey.shade100,
+    fontFamily: 'Poppins',
+    scaffoldBackgroundColor: Colors.grey.shade200,
     appBarTheme: const AppBarTheme(
       elevation: 0,
       backgroundColor: Colors.white,

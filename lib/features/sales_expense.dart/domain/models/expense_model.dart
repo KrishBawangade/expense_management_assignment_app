@@ -36,10 +36,13 @@ class ExpenseModel {
   final List<String>? paymentScreenshotPathList;
 
   /// List of all items included in this expense.
-  final List<ExpenseItemModel> itemList;
+  final List<ExpenseItemModel>? itemList;
 
   /// Payment history or breakdown of payments made toward this expense.
-  final List<PaymentHistoryModel> paymentHistory;
+  final List<PaymentHistoryModel>? paymentHistory;
+
+  /// Whether this is a fixed expense that should not be deleted.
+  final bool isFixed;
 
   const ExpenseModel({
     required this.id,
@@ -52,13 +55,12 @@ class ExpenseModel {
     this.paymentMode,
     this.note,
     this.paymentScreenshotPathList,
-    required this.itemList,
-    required this.paymentHistory,
+    this.itemList,
+    this.paymentHistory,
+    this.isFixed = false, // By default, not fixed
   });
 
-
-
-  /// copywith method
+  /// copyWith method
   ExpenseModel copyWith({
     String? id,
     DateTime? date,
@@ -72,6 +74,7 @@ class ExpenseModel {
     List<String>? paymentScreenshotPathList,
     List<ExpenseItemModel>? itemList,
     List<PaymentHistoryModel>? paymentHistory,
+    bool? isFixed,
   }) {
     return ExpenseModel(
       id: id ?? this.id,
@@ -86,6 +89,7 @@ class ExpenseModel {
       paymentScreenshotPathList: paymentScreenshotPathList ?? this.paymentScreenshotPathList,
       itemList: itemList ?? this.itemList,
       paymentHistory: paymentHistory ?? this.paymentHistory,
+      isFixed: isFixed ?? this.isFixed,
     );
   }
 }

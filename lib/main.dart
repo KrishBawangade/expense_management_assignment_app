@@ -1,5 +1,6 @@
 import 'package:expense_management_assignment_app/features/sales_expense.dart/data/dummy/dummy_expense_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'core/routing/app_router.dart';
@@ -13,7 +14,15 @@ import 'features/sales_expense.dart/domain/usecases/update_expense.dart';
 import 'features/sales_expense.dart/application/providers/expense_provider.dart';
 import 'features/sales_expense.dart/presentation/pages/sales_expense_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Lock orientation to portrait only
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  
   runApp(const MainApp());
 }
 

@@ -10,6 +10,7 @@ dependencies:
   collection: ^1.19.1
   flutter:
     sdk: flutter
+  flutter_feather_icons: ^2.0.0+1
   provider: ^6.1.5
   uuid: ^4.5.1
 

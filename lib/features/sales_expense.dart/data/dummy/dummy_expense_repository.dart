@@ -54,6 +54,29 @@ class DummyExpenseRepository implements ExpenseRepository {
   List<ExpenseModel> _generateMockExpenses() {
     final now = DateTime.now();
     return [
+      /// 1. Fixed Expense: Salaries
+      ExpenseModel(
+        id: _uuid.v4(),
+        date: now.subtract(Duration(days: 5)),
+        categoryName: 'Salaries',
+        totalBilling: 0,
+        paid: 0,
+        createdBy: 'Default',
+        isFixed: true,
+      ),
+
+      /// 2. Fixed Expense: Generic (e.g., rent, electricity)
+      ExpenseModel(
+        id: _uuid.v4(),
+        date: now.subtract(Duration(days: 3)),
+        categoryName: 'Fixed Expense',
+        totalBilling: 0,
+        paid: 0,
+        createdBy: 'Default',
+        isFixed: true,
+      ),
+
+      /// 3. Normal Expense: Grocery
       ExpenseModel(
         id: _uuid.v4(),
         date: now.subtract(Duration(days: 1)),
@@ -91,6 +114,7 @@ class DummyExpenseRepository implements ExpenseRepository {
             paymentScreenshotPathList: null,
           ),
         ],
+        isFixed: false,
       ),
     ];
   }
