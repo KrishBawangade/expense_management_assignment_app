@@ -1,4 +1,6 @@
 import 'package:expense_management_assignment_app/features/sales_expense.dart/data/dummy/dummy_expense_repository.dart';
+import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/controller/add_expense_controller.dart';
+import 'package:expense_management_assignment_app/shared/providers/image_picker_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +45,12 @@ class MainApp extends StatelessWidget {
             deleteExpense: DeleteExpense(repository),
             getExpenseById: GetExpenseById(repository),
           ),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AddExpenseController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ImagePickerProvider(),
         ),
       ],
       child: MaterialApp(

@@ -1,4 +1,5 @@
 import 'package:expense_management_assignment_app/features/sales_expense.dart/application/providers/expense_provider.dart';
+import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/sheet_launcher/expense_sheet_launcher.dart';
 import 'package:expense_management_assignment_app/shared/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -73,7 +74,7 @@ class _SalesExpenseScreenState extends State<SalesExpenseScreen>
             _tabController.index == 1
                 ? FloatingActionButton(
                   onPressed: () {
-                    // TODO: Add Expense logic
+                    showAddExpenseBottomSheet(context);
                   },
                   shape: const CircleBorder(),
                   backgroundColor: colorScheme.primary,
@@ -83,7 +84,7 @@ class _SalesExpenseScreenState extends State<SalesExpenseScreen>
         body: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 16, bottom: 8),
+              margin: const EdgeInsets.only(left: 16, bottom: 8, top: 20),
               child: TabBar(
                 controller: _tabController,
                 isScrollable: true,

@@ -10,7 +10,9 @@ class AppTheme {
       contrastLevel: 1,
       seedColor: Color(0xFFE6319C),
       primary: Color(0xFFE6319C),
-      secondary: Color(0xFF70C187),
+      secondary: Color(0xFF2FA54F),
+      tertiary: Color(0xFF3461D6),
+      surface: Colors.grey.shade200,
       brightness: Brightness.light, // stick to one
     ),
     fontFamily: 'Poppins',
