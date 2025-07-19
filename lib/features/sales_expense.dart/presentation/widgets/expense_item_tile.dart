@@ -35,18 +35,21 @@ class ExpenseItemTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(8)),
 
       /// Leading 3-dot box icon
-      leading: isFixed? null: InkWell(
-        onTap: onLeadingPressed,
-        borderRadius: BorderRadius.circular(8),
-        splashColor: colorScheme.secondary.withAlpha(60),
-        child: Container(
-          width: 25,
-          height: 25,
-          decoration: BoxDecoration(
-            border: Border.all(color: colorScheme.secondary, width: 1.5),
-            borderRadius: BorderRadius.circular(8),
+      leading: Visibility(
+        visible: isFixed? false: true,
+        child: InkWell(
+          onTap: isFixed? null: onLeadingPressed,
+          borderRadius: BorderRadius.circular(8),
+          splashColor: colorScheme.secondary.withAlpha(60),
+          child: Container(
+            width: 25,
+            height: 25,
+            decoration: BoxDecoration(
+              border: Border.all(color: colorScheme.secondary, width: 1.5),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(Icons.more_horiz, size: 20, color: colorScheme.secondary),
           ),
-          child: Icon(Icons.more_horiz, size: 20, color: colorScheme.secondary),
         ),
       ),
 

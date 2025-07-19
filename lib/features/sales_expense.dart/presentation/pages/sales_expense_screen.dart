@@ -1,5 +1,5 @@
 import 'package:expense_management_assignment_app/features/sales_expense.dart/application/providers/expense_provider.dart';
-import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/sheet_launcher/expense_sheet_launcher.dart';
+import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/add_expense/sheet_launcher/expense_sheet_launcher.dart';
 import 'package:expense_management_assignment_app/shared/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -72,19 +72,27 @@ class _SalesExpenseScreenState extends State<SalesExpenseScreen>
         ),
         floatingActionButton:
             _tabController.index == 1
-                ? FloatingActionButton(
-                  onPressed: () {
-                    showAddExpenseBottomSheet(context);
-                  },
-                  shape: const CircleBorder(),
-                  backgroundColor: colorScheme.primary,
-                  child: const Icon(Icons.add),
+                ? Padding(
+                  padding: const EdgeInsets.only(bottom: 120),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      showAddExpenseBottomSheet(context);
+                    },
+                    shape: const CircleBorder(),
+                    backgroundColor: colorScheme.primary,
+                    child: const Icon(Icons.add),
+                  ),
                 )
                 : null,
         body: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 16, bottom: 8, top: 20),
+              margin: const EdgeInsets.only(
+                left: 16,
+                bottom: 8,
+                top: 20,
+                right: 16,
+              ),
               child: TabBar(
                 controller: _tabController,
                 isScrollable: true,
@@ -92,7 +100,7 @@ class _SalesExpenseScreenState extends State<SalesExpenseScreen>
                 labelColor: colorScheme.primary,
                 unselectedLabelColor: theme.hintColor,
                 indicatorSize: TabBarIndicatorSize.tab,
-                labelPadding: const EdgeInsets.symmetric(horizontal: 30),
+                labelPadding: const EdgeInsets.symmetric(horizontal: 25),
                 tabAlignment: TabAlignment.start,
                 indicatorPadding: const EdgeInsets.symmetric(vertical: 8),
                 indicator: BoxDecoration(
@@ -178,6 +186,7 @@ class _SalesExpenseScreenState extends State<SalesExpenseScreen>
                                     return ExpenseItemTile(
                                       categoryName: expense.categoryName,
                                       isFixed: expense.isFixed,
+                                      onItemClicked: () {},
                                     );
                                   },
                                   separatorBuilder:

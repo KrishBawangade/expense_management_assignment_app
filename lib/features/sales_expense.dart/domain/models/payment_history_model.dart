@@ -13,10 +13,10 @@ class PaymentHistoryModel {
   final String createdBy;
 
   /// Amount paid in this transaction.
-  final double paymentAmount;
+  final double? paymentAmount;
 
   /// Mode used to make the payment.
-  final PaymentMode paymentMode;
+  final PaymentMode? paymentMode;
 
   /// List of file paths pointing to payment screenshots (optional).
   final List<String>? paymentScreenshotPathList;
@@ -25,8 +25,8 @@ class PaymentHistoryModel {
     required this.id,
     required this.createdAt,
     required this.createdBy,
-    required this.paymentAmount,
-    required this.paymentMode,
+    this.paymentAmount,
+    this.paymentMode,
     this.paymentScreenshotPathList,
   });
 

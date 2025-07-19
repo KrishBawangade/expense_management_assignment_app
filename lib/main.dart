@@ -1,5 +1,6 @@
 import 'package:expense_management_assignment_app/features/sales_expense.dart/data/dummy/dummy_expense_repository.dart';
-import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/controller/add_expense_controller.dart';
+import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/add_expense/controller/add_expense_controller.dart';
+import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/add_item/controller/add_item_controller.dart';
 import 'package:expense_management_assignment_app/shared/providers/image_picker_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +17,7 @@ import 'features/sales_expense.dart/domain/usecases/update_expense.dart';
 import 'features/sales_expense.dart/application/providers/expense_provider.dart';
 import 'features/sales_expense.dart/presentation/pages/sales_expense_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Lock orientation to portrait only
@@ -24,7 +25,12 @@ void main() async{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  
+
+  // Change System Navigation Icon Color
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(systemNavigationBarIconBrightness: Brightness.dark),
+  );
+
   runApp(const MainApp());
 }
 
@@ -38,20 +44,18 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ExpenseProvider(
-            getAllExpenses: GetAllExpenses(repository),
-            addExpense: AddExpense(repository),
-            updateExpense: UpdateExpense(repository),
-            deleteExpense: DeleteExpense(repository),
-            getExpenseById: GetExpenseById(repository),
-          ),
+          create:
+              (_) => ExpenseProvider(
+                getAllExpenses: GetAllExpenses(repository),
+                addExpense: AddExpense(repository),
+                updateExpense: UpdateExpense(repository),
+                deleteExpense: DeleteExpense(repository),
+                getExpenseById: GetExpenseById(repository),
+              ),
         ),
-        ChangeNotifierProvider(
-          create: (_) => AddExpenseController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ImagePickerProvider(),
-        ),
+        ChangeNotifierProvider(create: (context) => AddExpenseController(context.read<ExpenseProvider>())),
+        ChangeNotifierProvider(create: (_) => ImagePickerProvider()),
+        ChangeNotifierProvider(create: (_) => AddItemController()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -61,6 +65,6 @@ class MainApp extends StatelessWidget {
         onGenerateRoute: AppRouter.generateRoute,
         home: const SalesExpenseScreen(),
       ),
-    ); // ✅ This semicolon closes the return statement properly
+    );
   }
 }
