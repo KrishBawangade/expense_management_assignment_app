@@ -69,7 +69,6 @@ class _AddExpenseBottomSheetState extends State<AddExpenseBottomSheet> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 150, top: 60),
                   child: SingleChildScrollView(
-                    // controller: scrollController,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 24,
@@ -83,6 +82,7 @@ class _AddExpenseBottomSheetState extends State<AddExpenseBottomSheet> {
                         const VendorTextField(),
                         const SizedBox(height: 20),
                         AddItemButton(
+                          hasItems: controller.items.isNotEmpty,
                           onPressed: () {
                             showAddItemBottomSheet(context);
                           },

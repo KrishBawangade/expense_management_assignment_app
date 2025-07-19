@@ -27,8 +27,7 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet> {
 
   @override
   void dispose() {
-    // Optional: reset the controller after use
-    // disposeController?.reset();
+    disposeController?.reset();
     super.dispose();
   }
 
@@ -40,14 +39,14 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet> {
     );
     final isValid = controller.validateAllFields();
     if (isValid) {
-      if (addExpenseController.items.isNotEmpty) {
-        bool shouldPop = await showConfirmItemsBottomSheet(context);
-        if (shouldPop) {
-          if (mounted) {
-            Navigator.of(context).pop();
-          }
+      addExpenseController.addItem(controller.toExpenseItem());
+
+      bool? shouldPop = await showConfirmItemsBottomSheet(context);
+      if (shouldPop ?? false) {
+        if (mounted) {
+          Navigator.of(context).pop();
         }
-      } 
+      }
     }
   }
 
@@ -120,9 +119,9 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet> {
                   right: 0,
                   child: AddItemBottomActions(
                     onSave: _handleSave,
-                    onSaveAndNew: (){
+                    onSaveAndNew: () {
                       _handleSaveAndNew(controller);
-                      },
+                    },
                   ),
                 ),
               ],

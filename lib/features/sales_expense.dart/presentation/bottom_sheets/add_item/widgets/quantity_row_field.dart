@@ -50,7 +50,7 @@ class QuantityRowField extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               contentPadding: const EdgeInsets.symmetric(
-                horizontal: 8,
+                horizontal: 10,
                 vertical: 14,
               ),
               border: OutlineInputBorder(
@@ -118,7 +118,7 @@ class QuantityRowField extends StatelessWidget {
                 ),
                 hint: Text(
                   'Please Select',
-                  style: TextStyle(color: colorScheme.secondary),
+                  style: TextStyle(color: colorScheme.secondary, fontWeight: FontWeight.w600),
                 ),
                 items:
                     QuantityType.values.map((type) {

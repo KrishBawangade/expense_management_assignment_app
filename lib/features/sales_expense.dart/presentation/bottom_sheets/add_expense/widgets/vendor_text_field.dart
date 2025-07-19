@@ -57,7 +57,7 @@ class VendorTextField extends StatelessWidget {
                     ),
                   decoration: InputDecoration(
                     hintText: 'Please type here',
-                    hintStyle: TextStyle(color: theme.colorScheme.secondary),
+                    hintStyle: TextStyle(color: theme.colorScheme.secondary, fontWeight: FontWeight.w600),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),

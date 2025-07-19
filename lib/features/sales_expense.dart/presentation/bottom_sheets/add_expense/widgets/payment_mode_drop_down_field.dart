@@ -20,7 +20,9 @@ class PaymentModeDropDownField extends StatelessWidget {
         RichText(
           text: TextSpan(
             text: 'Mode of Payment',
-            style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
             children: const [
               TextSpan(text: ' *', style: TextStyle(color: Colors.red)),
             ],
@@ -43,17 +45,22 @@ class PaymentModeDropDownField extends StatelessWidget {
               icon: Icon(Icons.keyboard_arrow_down, color: secondaryColor),
               hint: Text(
                 'Please Select',
-                style: TextStyle(color: secondaryColor, fontSize: 16),
+                style: TextStyle(
+                  color: secondaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              items: PaymentMode.values.map((mode) {
-                return DropdownMenuItem<PaymentMode>(
-                  value: mode,
-                  child: Text(
-                    mode.label,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                );
-              }).toList(),
+              items:
+                  PaymentMode.values.map((mode) {
+                    return DropdownMenuItem<PaymentMode>(
+                      value: mode,
+                      child: Text(
+                        mode.label,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    );
+                  }).toList(),
               onChanged: controller.setPaymentMode,
             ),
           ),
@@ -61,5 +68,4 @@ class PaymentModeDropDownField extends StatelessWidget {
       ],
     );
   }
-
 }

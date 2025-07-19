@@ -40,7 +40,7 @@ class TotalItemPricingField extends StatelessWidget {
             ),
           decoration: InputDecoration(
             hintText: 'Please type here ₹ 1000',
-            hintStyle: TextStyle(color: colorScheme.secondary),
+            hintStyle: TextStyle(color: colorScheme.secondary, fontWeight: FontWeight.w600),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 14,

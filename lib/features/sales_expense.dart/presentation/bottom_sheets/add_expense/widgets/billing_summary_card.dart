@@ -1,3 +1,4 @@
+import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/view_history/sheet_launcher/expense_sheet_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:expense_management_assignment_app/features/sales_expense.dart/presentation/bottom_sheets/add_expense/controller/add_expense_controller.dart';
@@ -45,7 +46,7 @@ class BillingSummaryCard extends StatelessWidget {
                       const SizedBox(width: 4),
                       InkWell(
                         onTap: () {
-                          // TODO: Show billing info
+                          showHistoryBottomSheet(context);
                         },
                         child: Icon(
                           Icons.info_outline,
@@ -61,14 +62,25 @@ class BillingSummaryCard extends StatelessWidget {
                   width: 100,
                   child:
                       controller.items.isNotEmpty
-                          ? Text(
-                            controller.totalAmount.toStringAsFixed(2),
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              color: tertiaryColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
+                          ? Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.currency_rupee,
+                                size: 16,
+                                color: hintColor,
+                              ),
+                              const SizedBox(width: 2),
+                              Text(
+                                controller.totalAmount.toStringAsFixed(2),
+                                style: TextStyle(
+                                  color: tertiaryColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
                           )
                           : TextField(
                             controller: TextEditingController(
@@ -95,6 +107,15 @@ class BillingSummaryCard extends StatelessWidget {
                               contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 8,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.currency_rupee,
+                                size: 16,
+                                color: tertiaryColor,
+                              ),
+                              prefixIconConstraints: const BoxConstraints(
+                                maxWidth: 20,
+                                maxHeight: 20,
                               ),
                               suffixIcon: Icon(
                                 Icons.edit,
@@ -149,6 +170,15 @@ class BillingSummaryCard extends StatelessWidget {
                       contentPadding: EdgeInsets.symmetric(
                         horizontal: 8,
                         vertical: 8,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.currency_rupee,
+                        size: 16,
+                        color: Theme.of(context).colorScheme.primary
+                      ),
+                      prefixIconConstraints: const BoxConstraints(
+                        maxWidth: 20,
+                        maxHeight: 20,
                       ),
                       suffixIcon: Icon(
                         Icons.edit,

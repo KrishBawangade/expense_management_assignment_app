@@ -38,9 +38,7 @@ class AddItemHeader extends StatelessWidget {
                   ),
                 ).copyWith(
                   overlayColor: WidgetStateProperty.all(
-                    colorScheme.secondary.withAlpha(
-                      30,
-                    ), // splash color
+                    colorScheme.secondary.withAlpha(30), // splash color
                   ),
                 ),
                 onPressed:
@@ -48,10 +46,10 @@ class AddItemHeader extends StatelessWidget {
                         ? null
                         : () async {
                           if (addExpenseController.items.isNotEmpty) {
-                            bool shouldPop = await showConfirmItemsBottomSheet(
+                            bool? shouldPop = await showConfirmItemsBottomSheet(
                               context,
                             );
-                            if (shouldPop && context.mounted) {
+                            if ((shouldPop ?? false) && context.mounted) {
                               Navigator.of(context).pop();
                             }
                           }

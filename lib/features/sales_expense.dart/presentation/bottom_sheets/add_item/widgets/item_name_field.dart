@@ -45,6 +45,8 @@ class ItemNameField extends StatelessWidget {
             hintText: 'Please type here',
             hintStyle: TextStyle(
               color: colorScheme.secondary,
+              fontSize: 16,
+              fontWeight: FontWeight.w600
             ),
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             border: OutlineInputBorder(

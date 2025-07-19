@@ -186,7 +186,6 @@ class _SalesExpenseScreenState extends State<SalesExpenseScreen>
                                     return ExpenseItemTile(
                                       categoryName: expense.categoryName,
                                       isFixed: expense.isFixed,
-                                      onItemClicked: () {},
                                     );
                                   },
                                   separatorBuilder:
